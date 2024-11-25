@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Hip-Hop</title>
+    <!-- Link para o Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ea8bf0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card-header {
+            background-color: #0080ff69;
+            color: white;
+        }
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Quiz de Hip-Hop</h3>
+        </div>
+        <div class="card-body">
+            <form id="quizForm">
+                <div class="mb-3">
+                    <label for="question1" class="form-label">1. Quem é conhecido como o "Rei do Rap"?</label>
+                    <div>
+                        <input type="radio" name="question1" id="q1a" value="c" class="form-check-input"> 
+                        <label for="q1a">Jay-Z</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question1" id="q1b" value="a" class="form-check-input"> 
+                        <label for="q1b">Eminem</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question1" id="q1c" value="b" class="form-check-input"> 
+                        <label for="q1c">Tupac</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="question2" class="form-label">2. Qual é o verdadeiro nome de Snoop Dogg?</label>
+                    <div>
+                        <input type="radio" name="question2" id="q2a" value="b" class="form-check-input"> 
+                        <label for="q2a">Calvin Broadus</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question2" id="q2b" value="a" class="form-check-input"> 
+                        <label for="q2b">Sean Combs</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question2" id="q2c" value="c" class="form-check-input"> 
+                        <label for="q2c">Marshall Mathers</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="question3" class="form-label">3. Qual cidade é famosa por ser o berço do Hip-Hop?</label>
+                    <div>
+                        <input type="radio" name="question3" id="q3a" value="a" class="form-check-input"> 
+                        <label for="q3a">Los Angeles</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question3" id="q3b" value="b" class="form-check-input"> 
+                        <label for="q3b">Nova York</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question3" id="q3c" value="c" class="form-check-input"> 
+                        <label for="q3c">Miami</label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-custom" onclick="verificarRespostas()">Verificar Respostas</button>
+                </div>
+            </form>
+
+            <div id="resultado" class="mt-4 text-center" style="display: none;">
+                <h4>Resultado: <span id="pontuacao"></span> de 3 acertos</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript para lógica do Quiz -->
+<script>
+    function verificarRespostas() {
+        var respostasCorretas = {
+            "question1": "c", // Resposta correta: Jay-Z
+            "question2": "b", // Resposta correta: Calvin Broadus
+            "question3": "b"  // Resposta correta: Nova York
+        };
+
+        var pontuacao = 0;
+        var formulario = document.getElementById("quizForm");
+        var resultadoDiv = document.getElementById("resultado");
+        var pontuacaoSpan = document.getElementById("pontuacao");
+
+        // Checa as respostas
+        for (var question in respostasCorretas) {
+            var resposta = formulario.querySelector('input[name="' + question + '"]:checked');
+            if (resposta && resposta.value === respostasCorretas[question]) {
+                pontuacao++;
+            }
+        }
+
+        // Exibe o resultado
+        resultadoDiv.style.display = 'block';
+        pontuacaoSpan.textContent = pontuacao;
+    }
+</script>
+
+<!-- Link para o Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
